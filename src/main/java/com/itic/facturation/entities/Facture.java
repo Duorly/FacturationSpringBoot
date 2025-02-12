@@ -2,6 +2,8 @@ package com.itic.facturation.entities;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,18 +22,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Facture {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotBlank
-    private String date;
-    @NotBlank
-    private Double montantTotal;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@NotBlank
+	private String date;
+	private Double montantTotal;
 
-    @ManyToOne
-    @JoinColumn(name = "client_id")
-    private Client client;
+	@ManyToOne
+	@JoinColumn(name = "client_id")
+	@JsonIgnore
+	private Client client;
 
-    @OneToMany(mappedBy = "facture", cascade = CascadeType.ALL)
-    private List<LigneFacture> lignes;
+	@OneToMany(mappedBy = "facture", cascade = CascadeType.ALL)
+	private List<LigneFacture> lignes;
 }

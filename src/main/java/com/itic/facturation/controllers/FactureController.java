@@ -18,10 +18,6 @@ import com.itic.facturation.services.FactureService;
 public class FactureController {
     @Autowired
     private FactureService factureService;
-    
-    public FactureController() {
-    	this.factureService = new FactureService();
-    }
 
     @GetMapping("/client/{clientId}")
     public List<Facture> getFacturesByClientId(@PathVariable Long clientId) {

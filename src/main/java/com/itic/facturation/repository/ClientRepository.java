@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.itic.facturation.entities.Client;
 
 @Repository
-public interface ClientRepository extends JpaRepository<Client, Long> {}
+public interface ClientRepository extends JpaRepository<Client, Long> {
+	
+}

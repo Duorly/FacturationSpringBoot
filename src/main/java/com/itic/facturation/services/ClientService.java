@@ -14,7 +14,11 @@ public class ClientService {
     private ClientRepository clientRepository;
 
     public List<Client> getAllClients() {
-        return clientRepository.findAll();
+    	List<Client> clients = clientRepository.findAll();
+    	
+    	clients.forEach(client -> client.getFactures().size());
+    	
+        return clients;
     }
 
     public Client getClientById(Long id) {
